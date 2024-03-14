@@ -57,6 +57,7 @@ class VotingManagementApp
 		            {
 		                
 		              prsmt.setString(1, arr[i]);
+		              prsmt.executeUpdate();
 		              
 		            }
 		        catch (SQLException e) {
@@ -95,19 +96,73 @@ class VotingManagementApp
 			}
 			if((c1>c2) && (c1>c3))
 			{
+				String s2="INSERT INTO winner" +
+				        "  (can_nm,vote_no) VALUES " +
+				        " (?,?);";
+		        try (Connection con = DriverManager
+		            .getConnection("jdbc:mysql://localhost:3306/test","root","");
+		        		
+		        		PreparedStatement prsmt = con.prepareStatement(s2)) 
+		            {
+		                
+		              prsmt.setString(1, can1);
+		              prsmt.setInt(2, c1);
+		              prsmt.executeUpdate();
+		              
+		            }
+		        catch (SQLException e) {
+		          System.out.println(e);
+		        }
 				System.out.println("Winner is:-"+can1+" "+"no. of vote is:-"+c1);
 			}
 			else if((c2>c1) && (c2>c3))
 			{
+				String s2="INSERT INTO winner" +
+				        "  (can_nm,vote_no) VALUES " +
+				        " (?,?);";
+		        try (Connection con = DriverManager
+		            .getConnection("jdbc:mysql://localhost:3306/test","root","");
+		        		
+		        		PreparedStatement prsmt = con.prepareStatement(s2)) 
+		            {
+		                
+		              prsmt.setString(1, can2);
+		              prsmt.setInt(2, c2);
+		              prsmt.executeUpdate();
+		              
+		            }
+		        catch (SQLException e) {
+		          System.out.println(e);
+		        }
 				System.out.println("Winner is:-"+can2+" "+"+no. of vote is:-"+c2);
 			}
 			else if((c3>c1) && (c3>c2))
 			{
+				String s2="INSERT INTO winner" +
+				        "  (can_nm,vote_no) VALUES " +
+				        " (?,?);";
+		        try (Connection con = DriverManager
+		            .getConnection("jdbc:mysql://localhost:3306/test","root","");
+		        		
+		        		PreparedStatement prsmt = con.prepareStatement(s2)) 
+		            {
+		                
+		              prsmt.setString(1, can3);
+		              prsmt.setInt(2, c3);
+		              prsmt.executeUpdate();
+		              
+		            }
+		        catch (SQLException e) {
+		          System.out.println(e);
+		        }
 				System.out.println("Winner is:-"+can3+" "+"no. of vote is:-"+c3);
 			}
 			else {
 				System.out.println("No one won the election");
+		
 			}
+			
+			
 		}
 
 }
